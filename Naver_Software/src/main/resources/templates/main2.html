@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta content="text/html; charset=utf-8" />
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/main.css}" />
+	    <script th:src="@{/js/}"></script>
+	    
+	    <link rel="icon" type="image/png" href="etc/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="etc/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="etc/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="etc/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="etc/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="etc/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="etc/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="etc/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="etc/css/util.css">
+	<link rel="stylesheet" type="text/css" href="etc/css/main.css">
+</head>
+<body>
+	<div class="container text-center my-3">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<!-- <nav class="navbar navbar-dark bg-dark"> -->
+			<a class="navbar-brand" href="#">LOGO</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a> <a
+								class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#"
+						tabindex="-1" aria-disabled="true">Disabled</a></li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button>
+					
+				</form>
+			</div>
+		</nav>
+		
+		<div class="row" style="padding-top:20px;">
+			<!--main sidebar-->
+			
+			<div class="col-md-10">
+				<div class="limiter">
+					<div class="container-login100">
+						<div class="wrap-login100">
+							<form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+								<span class="login100-form-title">
+									Sign In
+								</span>
+			
+								<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+									<input class="input100" type="text" name="username" placeholder="Username">
+									<span class="focus-input100"></span>
+								</div>
+			
+								<div class="wrap-input100 validate-input" data-validate = "Please enter password">
+									<input class="input100" type="password" name="pass" placeholder="Password">
+									<span class="focus-input100"></span>
+								</div>
+			
+								<div class="text-right p-t-13 p-b-23">
+									<span class="txt1">
+										Forgot
+									</span>
+			
+									<a href="#" class="txt2">
+										Username / Password?
+									</a>
+								</div>
+			
+								<div class="container-login100-form-btn">
+									<button class="login100-form-btn">
+										Sign in
+									</button>
+								</div>
+			
+								<div class="flex-col-c p-t-170 p-b-40">
+									<span class="txt1 p-b-9">
+										Don’t have an account?
+									</span>
+			
+									<a href="#" class="txt3">
+										Sign up now
+									</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			<script src="etc/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="etc/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="etc/vendor/bootstrap/js/popper.js"></script>
+	<script src="etc/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="etc/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="etc/vendor/daterangepicker/moment.min.js"></script>
+	<script src="etc/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="etc/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="etc/js/main.js"></script>
+	
+	
+	<script>
+	/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+	var dropdown = document.getElementsByClassName("dropdown-btn");
+	var i;
+	
+	for (i = 0; i < dropdown.length; i++) {
+	  dropdown[i].addEventListener("click", function() {
+	  this.classList.toggle("active");
+	  var dropdownContent = this.nextElementSibling;
+	  if (dropdownContent.style.display === "none") {
+	  dropdownContent.style.display = "block";
+	  } else {
+	  dropdownContent.style.display = "none";
+	  }
+	  });
+	}
+	</script>
+</body>
+</html>
