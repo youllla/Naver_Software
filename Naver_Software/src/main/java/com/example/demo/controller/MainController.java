@@ -8,12 +8,7 @@ public class MainController {
 	
 	@RequestMapping("main")
 	public String main() throws Exception {
-		return "main";
-	}
-
-	@RequestMapping("main2")
-	public String main2() throws Exception {
-		return "main2";
+		return "/user/main";
 	}
 
 }
