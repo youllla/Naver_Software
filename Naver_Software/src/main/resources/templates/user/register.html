@@ -19,7 +19,8 @@
 	<div layout:fragment="content">
 		<article class="card-body mx-auto m-t-30 m-b-50" style="max-width: 400px;">
 			<h4 class="card-title mt-3 text-center">회원가입</h4>
-			<form>
+			
+			<form th:action="@{/register}" method="post">
 			<div class="form-group input-group">
 				<div class="input-group-prepend">
 				    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -62,7 +63,7 @@
 		    <div class="form-group input-group">
 		    	<div class="input-group-prepend">
 				    <span class="input-group-text"> <i class="fa fa-home"></i> </span>
-					<select name="address1" id="address2" class="custom-select fs-13" style="max-width: 120px;">
+					<select name="address1" id="address1" class="custom-select fs-13" style="max-width: 120px;">
 					    <option>선택</option>
 					    <option value="1">서울</option>
 						<option value="2">부산</option>
