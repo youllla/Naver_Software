@@ -41,11 +41,19 @@ public class UserService implements UserDetailsService {
 		Optional<UserEntity> userEntityWrapper = userRepository.findByEmail(email);
 		UserEntity userEntity = userEntityWrapper.get();
 		
+		System.out.println("userEntityWrapper : " + userEntityWrapper);
+		System.out.println("userEntity : " + userEntity);
+		
 		List<GrantedAuthority> authorities = new ArrayList<>();
+		System.out.println("authorities : " + authorities);
 		
-		UserDTO userDTO = new UserDTO();
+		System.out.println("service email : " + email);
+		System.out.println("service email2 : " + userEntity.getEmail());
+		System.out.println("service pwd : " + userEntity.getPassword());
+		//UserDTO userDTO = new UserDTO();
 		
-		if(userDTO.getRole() == "1") { //조건 수정
+		//if(userDTO.getRole() == "1") { //조건 수정
+		if(("admin@email.com").equals(email)) { //조건 수정
 			authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
 		} else {
 			authorities.add(new SimpleGrantedAuthority(Role.USER.getValue()));

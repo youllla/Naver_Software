@@ -10,5 +10,10 @@ public class MainController {
 	public String main() throws Exception {
 		return "/user/main";
 	}
+	
+	@RequestMapping("test")
+	public String test() throws Exception {
+		return "/test";
+	}
 
 }

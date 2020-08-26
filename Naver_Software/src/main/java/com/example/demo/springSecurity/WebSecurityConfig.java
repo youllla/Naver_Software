@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			//페이지 권한
-			.antMatchers("/main", "/login", "/register").permitAll() // 전부 접근 허용
+			.antMatchers("/main", "/login", "/register", "/test").permitAll() // 전부 접근 허용
 			.antMatchers("/admin/**").hasRole("ADMIN") // ADMIN
 			//.antMatchers("/").hasRole("USER") // USER, ADMIN
             .anyRequest().authenticated() // 나머지 요청들은 권한 종류 상관 없이 권한이 있어야 접근 가능
@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.formLogin()
 				.loginPage("/login")
-				.defaultSuccessUrl("/user/login/loginSuccess") // 로그인 성공 후 리다이렉트 주소
+				.defaultSuccessUrl("/user/loginSuccess") // 로그인 성공 후 리다이렉트 주소
 			
 			//로그아웃
 			.and()

@@ -3,8 +3,6 @@ package com.example.demo.dto;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-
 import com.example.demo.springSecurity.UserEntity;
 
 import lombok.Builder;
@@ -31,22 +29,39 @@ public class UserDTO {
 	private LocalDateTime updDate; //수정일
 	
 	public UserEntity toEntity() {
+		
+		System.out.println("Entity email : " + email);
+		System.out.println("Entity password : " + password);
+		
 		return UserEntity.builder()
 				.userNo(userNo)
 				.name(name)
 				.email(email)
 				.password(password)
+				.tel(tel)
+				.address(address)
+				.gender(gender)
+				.interest(interest)
 				.regDate(regDate)
 				.updDate(updDate)
 				.build();
 	}
 	
 	@Builder
-	public UserDTO(int userNo, String name, String email, String password, LocalDateTime regDate, LocalDateTime updDate) {
+	public UserDTO(int userNo, String name, String email, String password, String tel, String address, String gender, String interest, String role, LocalDateTime regDate, LocalDateTime updDate) {
 		this.userNo = userNo;
+		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.tel = tel;
+		this.address = address;
+		this.gender = gender;
+		this.interest = interest;
+		//this.role = role;
 		this.regDate = regDate;
 		this.updDate = updDate;
+		
+		System.out.println("DTO email : " + email);
+		System.out.println("DTO password : " + password);
 	}
 }

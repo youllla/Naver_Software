@@ -32,12 +32,13 @@ public class UserController {
 		return "/user/login";
 	}
 
-	/*
-	 * @GetMapping("loginSuccess") public String loginSuccess() throws Exception {
-	 * return "/user/loginSuccess"; }
-	 * 
-	 * @GetMapping("logout") public String logout() throws Exception { return
-	 * "/user/logout"; }
-	 */
+	@GetMapping("loginSuccess")
+	public String loginSuccess() throws Exception {
+		return "/user/loginSuccess"; }
+	  
+	@GetMapping("logout")
+	public String logout() throws Exception {
+		return "/user/logout"; }
+	 
 
 }

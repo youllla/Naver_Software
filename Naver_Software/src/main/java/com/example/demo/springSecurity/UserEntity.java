@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -48,25 +50,33 @@ public class UserEntity {
 	@Column(length = 100, nullable = true)
 	private String interest;
 	
-	@Column(length = 10, nullable = false)
+	@Column(length = 10, nullable = true)
 	private String role;
 	
-	@CreatedDate
+	@CreationTimestamp
 	@Column(length = 100, nullable = false)
 	private LocalDateTime regDate;
 	
-	@LastModifiedDate
+	@UpdateTimestamp
 	@Column(length = 100, nullable = false)
 	private LocalDateTime updDate;
 	
 	@Builder
-	public UserEntity(int userNo, String name, String email, String password, LocalDateTime regDate, LocalDateTime updDate) {
+	public UserEntity(int userNo, String name, String email, String password, String tel, String address, String gender, String interest, String role, LocalDateTime regDate, LocalDateTime updDate) {
 		this.userNo = userNo;
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.tel = tel;
+		this.address = address;
+		this.gender = gender;
+		this.interest = interest;
+		//this.role = role;
 		this.regDate = regDate;
 		this.updDate = updDate;
+		
+		System.out.println("Entity email : " + email);
+		System.out.println("Entity password : " + password);
 	}
 
 }
