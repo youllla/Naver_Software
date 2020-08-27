@@ -72,9 +72,9 @@ public class UserEntity {
 		this.gender = gender;
 		this.interest = interest;
 		//this.role = role;
-		this.regDate = regDate;
-		this.updDate = updDate;
-		
+		this.regDate = LocalDateTime.now();
+		this.updDate = LocalDateTime.now();
+		System.err.println(regDate);
 		System.out.println("Entity email : " + email);
 		System.out.println("Entity password : " + password);
 	}

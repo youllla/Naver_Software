@@ -21,6 +21,9 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.springSecurity.Role;
 import com.example.demo.springSecurity.UserEntity;
 import com.example.demo.springSecurity.UserRepository;
+import com.example.demo.util.EmailSender;
+
+import groovy.util.logging.Log;
 
 @Service
 @AllArgsConstructor
@@ -33,7 +36,17 @@ public class UserService implements UserDetailsService {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		
-		return userRepository.save(userDTO.toEntity()).getUserNo();
+		//DB insert 성공 여부
+		int result = userRepository.save(userDTO.toEntity()).getUserNo();
+		
+		System.out.println("result : " + result);
+		
+		//수정 필요
+		if (result == (userDTO.toEntity()).getUserNo()) {
+			EmailSender.sendEmail();
+		}
+		
+		return result;
 	}
 
 	@Override
