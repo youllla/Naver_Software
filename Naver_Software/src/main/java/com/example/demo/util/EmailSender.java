@@ -9,11 +9,24 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.example.demo.vo.UserVO;
+
 public class EmailSender {
-	public static void sendEmail() {
+	
+	public static void sendEmail(UserVO userVO, String authKey) {
 		String host = "smtp.naver.com";
-		String user = "";
+		String fromEmail = "";
 		String password = "";
+		String mailTitle = "Mail Test";
+		String html = "<h1>[회원가입 인증]</h1>"
+				+ "<p>아래 링크를 클릭하시면 회원가입 인증이 완료됩니다.</p>"
+				+ "<a href='http://localhost:8080/naversw/registerConfirm?email="
+				//+ userVO.getUserNo()
+				//+ "&email="
+				+ userVO.getEmail()
+				+ "&authKey="
+				+ authKey
+				+ "' target='_blenk'>이메일 인증 확인</a>";
 		
 		//SMTP 서버 정보 설정
 		Properties prop = new Properties();
@@ -21,31 +34,36 @@ public class EmailSender {
 		prop.put("mail.smtp.port", 587);
 		prop.put("mail.smtp.auth", "true");
 		
-		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() { 
+		Session session = Session.getInstance(prop, new javax.mail.Authenticator() { 
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password);
+				return new PasswordAuthentication(fromEmail, password);
 			}
 		});
 		
 		
 		try { 
 			MimeMessage message = new MimeMessage(session); 
-			message.setFrom(new InternetAddress(user));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(""));
-		  
+			message.setFrom(new InternetAddress(fromEmail));
+			
+			InternetAddress[] toUserEmail = new InternetAddress[1];
+			toUserEmail[0] = new InternetAddress("");
+			//toUserEmail[1] = new InternetAddress("");
+			
+			message.addRecipients(Message.RecipientType.TO, toUserEmail);
+			//message.addRecipients(Message.RecipientType.TO, userVO.getEmail());
+			
 			// 메일 제목 
-			message.setSubject("Mail Test");
+			message.setSubject(mailTitle);
 			
 			// 메일 내용 
-			message.setText("http://localhost:8080/naversw/main");
-			  
-			// send the message 
+			message.setContent(html, "text/html; charset=utf-8");
+			
+			// 메일 보내기 
 			Transport.send(message);
-			System.out.println("Success Message Send"); 
-			  
+			System.out.println("Success sendEmail"); 
+			
 			} catch (Exception e) {
 			  e.printStackTrace();
 		}
 	}
-
 }

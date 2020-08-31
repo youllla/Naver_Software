@@ -31,29 +31,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/css/**", "/js/**", "/image/**", "/lib/**");
+		web.ignoring().antMatchers("/static/**", "/css/**", "/js/**", "/image/**", "/lib/**", "/fragments/**", "/layout/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			//페이지 권한
-			.antMatchers("/main", "/login", "/register", "/test").permitAll() // 전부 접근 허용
-			.antMatchers("/admin/**").hasRole("ADMIN") // ADMIN
-			//.antMatchers("/").hasRole("USER") // USER, ADMIN
-            .anyRequest().authenticated() // 나머지 요청들은 권한 종류 상관 없이 권한이 있어야 접근 가능
+			.antMatchers("/admin/**").hasRole("ADMIN")
+            .antMatchers("/user/**").hasRole("USER")
+            .antMatchers("/**").permitAll()
+			//.antMatchers("/user/**").hasRole("USER") // USER, ADMIN
+            //.anyRequest().authenticated() // 나머지 요청들은 권한 종류 상관 없이 권한이 있어야 접근 가능
 			
 			//로그인
 			.and()
 				.formLogin()
 				.loginPage("/login")
-				.defaultSuccessUrl("/user/loginSuccess") // 로그인 성공 후 리다이렉트 주소
-			
+				.defaultSuccessUrl("/main") // 로그인 성공 후 리다이렉트 주소
+				.permitAll()
 			//로그아웃
 			.and()
 				.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-				.logoutSuccessUrl("/user/logout/success") // 로그아웃 성공 후 리다이렉트 주소
+				.logoutSuccessUrl("/main") // 로그아웃 성공 후 리다이렉트 주소
 				.invalidateHttpSession(true) // 세션 삭제
 				
 			.and()
@@ -64,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService).passwordEncoder(passwordEncoder()); 
+		auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+		System.out.println("auth: " + auth);
 	}
 }

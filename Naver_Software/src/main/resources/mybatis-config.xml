@@ -4,10 +4,10 @@
 <configuration>
     <typeAliases>
     	<!-- 사용할 DTO 등록  -->
-		<package name="com.example.demo.dto"/>
+		<package name="com.example.demo.vo"/>
     </typeAliases>
     
-    <!-- <mappers>
+    <mappers>
     	<mapper resource="mapper/UserMapper.xml"/>
-    </mappers> -->
+    </mappers>
 </configuration>

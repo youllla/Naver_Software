@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.demo.vo;
 
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class UserDTO {
+public class UserVO {
 	private int userNo; //회원번호(PK)
 	private String name; //이름
 	private String email; //이메일
@@ -25,14 +25,12 @@ public class UserDTO {
 	private String gender; //성별
 	private String interest; //관심분야
 	private String role; //권한
+	private String authKey; //인증키
+	private int active; //인증여부
 	private LocalDateTime regDate; //등록일
 	private LocalDateTime updDate; //수정일
 	
 	public UserEntity toEntity() {
-		
-		System.out.println("Entity email : " + email);
-		System.out.println("Entity password : " + password);
-		
 		return UserEntity.builder()
 				.userNo(userNo)
 				.name(name)
@@ -42,13 +40,28 @@ public class UserDTO {
 				.address(address)
 				.gender(gender)
 				.interest(interest)
+				.role(role)
+				.authKey(authKey)
+				.active(active)
 				.regDate(regDate)
 				.updDate(updDate)
 				.build();
 	}
 	
 	@Builder
-	public UserDTO(int userNo, String name, String email, String password, String tel, String address, String gender, String interest, String role, LocalDateTime regDate, LocalDateTime updDate) {
+	public UserVO(int userNo, 
+				String name, 
+				String email, 
+				String password, 
+				String tel, 
+				String address, 
+				String gender, 
+				String interest, 
+				String role,
+				String authKey,
+				int active, 
+				LocalDateTime regDate, 
+				LocalDateTime updDate) {
 		this.userNo = userNo;
 		this.name = name;
 		this.email = email;
@@ -57,11 +70,13 @@ public class UserDTO {
 		this.address = address;
 		this.gender = gender;
 		this.interest = interest;
-		//this.role = role;
+		this.role = role;
+		this.authKey = authKey;
+		this.active = active;
 		this.regDate = regDate;
 		this.updDate = updDate;
 		
-		System.out.println("DTO email : " + email);
-		System.out.println("DTO password : " + password);
+		System.out.println("VO email : " + email);
+		System.out.println("VO password : " + password);
 	}
 }

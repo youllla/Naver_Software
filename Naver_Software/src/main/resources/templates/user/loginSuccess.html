@@ -5,12 +5,12 @@
 	
 	<!-- 고유 css 추가 -->
 	<th:block layout:fragment="css">
-		<link rel="stylesheet" type="text/css" href="lib/css/main.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/lib/css/main.css}">
 	</th:block> 
 	
 	<!-- script 추가 -->
 	<th:block layout:fragment="script">
-		<script src="lib/js/main.js"></script>
+		<script th:src="@{/lib/js/main.js}"></script>
 	</th:block>
 	
 	
@@ -21,7 +21,8 @@
 					<h1>로그인 성공</h1>
 				    <hr>
 				    <p>
-				        <span sec:authentication="name"></span>님 환영합니다~
+				        <span sec:authentication="email"></span>님 환영합니다~
+				        <span sec:authentication="principal.authorities"></span>dddddd
 				    </p>
 				    <a th:href="@{/main}">메인으로 이동</a>
 				</div>

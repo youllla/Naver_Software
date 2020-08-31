@@ -5,12 +5,12 @@
 	
 	<!-- 고유 css 추가 -->
 	<th:block layout:fragment="css">
-		<link rel="stylesheet" type="text/css" href="lib/css/main.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/lib/css/main.css}">
 	</th:block> 
 	
 	<!-- script 추가 -->
 	<th:block layout:fragment="script">
-		<script src="lib/js/main.js"></script>
+		<script th:src="@{/lib/js/main.js}"></script>
 	</th:block>
 	
 	
@@ -24,7 +24,6 @@
 							Welcome
 						</span>
 	
-				        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 						<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
 							<input class="input100" type="text" name="username" placeholder="Email">
 							<span class="focus-input100"></span>
@@ -42,7 +41,7 @@
 						</div>
 	
 						<div class="container-login100-form-btn">
-							<button class="login100-form-btn">
+							<button type="submit" class="login100-form-btn">
 								Login
 							</button>
 						</div>
